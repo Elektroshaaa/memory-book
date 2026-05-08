@@ -11,6 +11,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Галерея внутри карточки мероприятия */
+        .event-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .event-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #E2D7C1;
+        }
+        @media (max-width: 768px) {
+            .event-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 8px;
+            }
+            .event-gallery img {
+                height: 160px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav id="sidebar" class="sidebar">
@@ -34,7 +59,7 @@
         </section>
         <div class="events-feed">
 
-            <!-- Блок: Украшение школы -->
+            <!-- Украшение школы -->
             <div class="event-card">
                 <img src="school-decoration1.jpg" alt="Украшение школы" class="event-img" onerror="this.style.display='none'; this.parentElement.querySelector('.event-placeholder').style.display='flex'">
                 <img src="school-decoration.jpg" alt="Украшение школы" class="event-img" onerror="this.style.display='none'; this.parentElement.querySelector('.event-placeholder').style.display='flex'">
@@ -45,7 +70,7 @@
                 </div>
             </div>
 
-            <!-- Блок: Окна Победы -->
+            <!-- Окна Победы -->
             <div class="event-card">
                 <img src="Windows-of-Victory.png" alt="Окна Победы" class="event-img" onerror="this.style.display='none'; this.parentElement.querySelector('.event-placeholder').style.display='flex'">
                 <img src="Windows-of-Victory1.png" alt="Окна Победы" class="event-img" onerror="this.style.display='none'; this.parentElement.querySelector('.event-placeholder').style.display='flex'">
@@ -56,6 +81,30 @@
                 <div class="event-info">
                     <h3>Окна Победы</h3>
                     <p>Оформляем окна школы символами Победы. Каждый класс готовит свой рисунок.</p>
+                </div>
+            </div>
+
+            <!-- Кино Победы -->
+            <div class="event-card">
+                <div class="event-gallery">
+                    <img src="CinemaVictories.png" alt="Кино Победы" onerror="this.style.display='none'; this.parentElement.innerHTML+='<div style=\'width:100%;height:200px;background:#D3C7A6;display:flex;align-items:center;justify-content:center;border-radius:12px;color:#5C4B3A;\'>Фото недоступно</div>'">
+                    <img src="CinemaVictories1.png" alt="Кино Победы" onerror="this.style.display='none'; this.parentElement.innerHTML+='<div style=\'width:100%;height:200px;background:#D3C7A6;display:flex;align-items:center;justify-content:center;border-radius:12px;color:#5C4B3A;\'>Фото недоступно</div>'">
+                </div>
+                <div class="event-info">
+                    <h3>Кино Победы</h3>
+                    <!-- Описание не добавляю, как вы просили -->
+                </div>
+            </div>
+
+            <!-- Венок Победы -->
+            <div class="event-card">
+                <div class="event-gallery">
+                    <img src="VictoryWreath.png" alt="Венок Победы" onerror="this.style.display='none'; this.parentElement.innerHTML+='<div style=\'width:100%;height:200px;background:#D3C7A6;display:flex;align-items:center;justify-content:center;border-radius:12px;color:#5C4B3A;\'>Фото недоступно</div>'">
+                    <img src="VictoryWreath1.png" alt="Венок Победы" onerror="this.style.display='none'; this.parentElement.innerHTML+='<div style=\'width:100%;height:200px;background:#D3C7A6;display:flex;align-items:center;justify-content:center;border-radius:12px;color:#5C4B3A;\'>Фото недоступно</div>'">
+                </div>
+                <div class="event-info">
+                    <h3>Венок Победы</h3>
+                    <p>Ребята делают цветы - это 5-Д класс.</p>
                 </div>
             </div>
 
