@@ -73,11 +73,9 @@ if (document.getElementById('cards-grid')) {
     });
 }
 
-// Работа с формой писем (отправка в Formspree + отображение на сайте)
+// Отправка письма через Formspree (без сохранения на сайте)
 const letterForm = document.getElementById('letter-form');
 if (letterForm) {
-    const publishedContainer = document.getElementById('published-letters');
-
     letterForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -91,14 +89,12 @@ if (letterForm) {
 
         if (!name || !className || !text) return;
 
-        // Создаём объект данных для отправки
         const formData = new FormData();
         formData.append('name', name);
         formData.append('class', className);
         formData.append('message', text);
 
         try {
-            // Отправляем на Formspree
             const response = await fetch('https://formspree.io/f/mnjwgpwp', {
                 method: 'POST',
                 body: formData,
@@ -108,26 +104,15 @@ if (letterForm) {
             });
 
             if (response.ok) {
-                // Показываем письмо на странице
-                const letterBubble = document.createElement('div');
-                letterBubble.className = 'letter-bubble';
-                letterBubble.innerHTML = `
-                    <p class="letter-author">${name}, ${className}</p>
-                    <p>${text}</p>
-                `;
-                publishedContainer.prepend(letterBubble);
-
-                // Очищаем поля
+                alert('Спасибо! Ваше письмо отправлено и после проверки появится на сайте.');
                 nameInput.value = '';
                 classInput.value = '';
                 textInput.value = '';
-
-                alert('Спасибо! Ваше письмо отправлено и скоро появится на почте.');
             } else {
-                alert('Ошибка при отправке. Попробуйте позже.');
+                alert('Ошибка при отправке. Попробуйте ещё раз.');
             }
         } catch (error) {
-            alert('Ошибка соединения. Проверьте интернет.');
+            alert('Не удалось отправить письмо. Проверьте интернет.');
         }
     });
 }
