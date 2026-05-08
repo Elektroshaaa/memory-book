@@ -24,10 +24,9 @@ if (searchBtn) {
         const s = studentInput.value.toLowerCase().trim();
         const v = veteranInput.value.toLowerCase().trim();
         cards.forEach(card => {
-            // Берём текст прямо из div'ов на карточке
-            const studentName = card.querySelector('.card-student-name')?.textContent?.toLowerCase() || '';
-            const veteranName = card.querySelector('.card-veteran-name')?.textContent?.toLowerCase() || '';
-            card.style.display = ( (!s || studentName.includes(s)) && (!v || veteranName.includes(v)) ) ? 'flex' : 'none';
+            const student = card.querySelector('.card-student-name')?.textContent?.toLowerCase() || '';
+            const veteran = card.querySelector('.card-veteran-name')?.textContent?.toLowerCase() || '';
+            card.style.display = ( (!s || student.includes(s)) && (!v || veteran.includes(v)) ) ? 'flex' : 'none';
         });
     }
     searchBtn.addEventListener('click', filterCards);
@@ -45,11 +44,9 @@ if (searchBtn) {
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            // Фото
             const photo = card.getAttribute('data-photo') || '';
             modalPhoto.src = photo;
             modalPhoto.style.display = photo ? 'block' : 'none';
-            // Текстовые данные
             modalStudent.textContent = card.querySelector('.card-student-name')?.textContent || '';
             modalVeteran.textContent = card.querySelector('.card-veteran-name')?.textContent || '';
             modalYears.textContent = card.querySelector('.card-years')?.textContent || '';
@@ -76,12 +73,61 @@ if (document.getElementById('cards-grid')) {
     });
 }
 
-// Заглушка для формы письма
+// Работа с формой писем (отправка в Formspree + отображение на сайте)
 const letterForm = document.getElementById('letter-form');
 if (letterForm) {
-    letterForm.addEventListener('submit', (e) => {
+    const publishedContainer = document.getElementById('published-letters');
+
+    letterForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        alert('Спасибо! Письма скоро будут отправляться. (Пока в разработке)');
-        letterForm.reset();
+
+        const nameInput = document.getElementById('letter-name');
+        const classInput = document.getElementById('letter-class');
+        const textInput = document.getElementById('letter-text');
+
+        const name = nameInput.value.trim();
+        const className = classInput.value.trim();
+        const text = textInput.value.trim();
+
+        if (!name || !className || !text) return;
+
+        // Создаём объект данных для отправки
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('class', className);
+        formData.append('message', text);
+
+        try {
+            // Отправляем на Formspree
+            const response = await fetch('https://formspree.io/f/mnjwgpwp', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Показываем письмо на странице
+                const letterBubble = document.createElement('div');
+                letterBubble.className = 'letter-bubble';
+                letterBubble.innerHTML = `
+                    <p class="letter-author">${name}, ${className}</p>
+                    <p>${text}</p>
+                `;
+                publishedContainer.prepend(letterBubble);
+
+                // Очищаем поля
+                nameInput.value = '';
+                classInput.value = '';
+                textInput.value = '';
+
+                alert('Спасибо! Ваше письмо отправлено и скоро появится на почте.');
+            } else {
+                alert('Ошибка при отправке. Попробуйте позже.');
+            }
+        } catch (error) {
+            alert('Ошибка соединения. Проверьте интернет.');
+        }
     });
 }

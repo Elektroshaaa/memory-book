@@ -6,7 +6,7 @@
     <title>Письма — Салтыковская гимназия</title>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="no-referrer-when-downgrade">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io;">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -33,21 +33,15 @@
             <p class="subtitle">Ваши слова благодарности ветеранам</p>
         </section>
         <div class="letters-container">
-            <form class="letter-form" id="letter-form">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="text" placeholder="Класс (например, 9А)" required>
-                <textarea placeholder="Напишите письмо..." rows="5" required></textarea>
+            <form class="letter-form" id="letter-form"
+                  action="https://formspree.io/f/mnjwgpwp" method="POST">
+                <input type="text" name="name" id="letter-name" placeholder="Ваше имя" required>
+                <input type="text" name="class" id="letter-class" placeholder="Класс (например, 9А)" required>
+                <textarea name="message" id="letter-text" placeholder="Напишите письмо..." rows="5" required></textarea>
                 <button type="submit" class="btn-submit">Отправить</button>
             </form>
-            <div class="published-letters">
-                <div class="letter-bubble">
-                    <p class="letter-author">Анна, 9А</p>
-                    <p>Спасибо за мирное небо! Мы помним ваш подвиг.</p>
-                </div>
-                <div class="letter-bubble">
-                    <p class="letter-author">Михаил, 10Б</p>
-                    <p>Низкий поклон всем, кто отстоял нашу Родину.</p>
-                </div>
+            <div class="published-letters" id="published-letters">
+                <!-- Здесь будут появляться отправленные письма -->
             </div>
         </div>
     </main>
