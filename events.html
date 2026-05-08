@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мероприятия — Салтыковская гимназия</title>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header"><span class="sidebar-title">Салтыковская гимназия</span></div>
+        <ul class="sidebar-nav">
+            <li><a href="index.html">Книга памяти</a></li>
+            <li><a href="events.html" class="active">Мероприятия</a></li>
+            <li><a href="letters.html">Письма</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <button id="menu-toggle" class="menu-toggle" aria-label="Открыть меню">
+        <img src="star-icon.png" alt="Меню" class="menu-icon-img">
+    </button>
+
+    <main class="content">
+        <section class="intro">
+            <h1>Май 2026</h1>
+            <p class="subtitle">Хроника подготовки к 9 мая</p>
+        </section>
+        <div class="events-feed">
+            <div class="event-card">
+                <img src="ukrashenie-1.jpg" alt="Украшение гимназии" class="event-img" onerror="this.style.display='none'; this.parentElement.querySelector('.event-placeholder').style.display='flex'">
+                <div class="event-placeholder" style="display:none;">Фото скоро появится</div>
+                <div class="event-info">
+                    <span class="event-date">4 апреля</span>
+                    <h3>Украшение гимназии к 9 мая</h3>
+                    <p>Начали оформлять окна и коридоры звёздами, георгиевскими лентами, плакатами. Участвуют все классы.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Если вы хотите добавить историю вашего родственника — напишите нам на почту: <a href="mailto:pamyat.gimnazii@mail.ru">pamyat.gimnazii@mail.ru</a></p>
+        <p class="small">проект к 9 мая, 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

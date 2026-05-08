@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — Салтыковская гимназия</title>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header"><span class="sidebar-title">Салтыковская гимназия</span></div>
+        <ul class="sidebar-nav">
+            <li><a href="index.html">Книга памяти</a></li>
+            <li><a href="events.html">Мероприятия</a></li>
+            <li><a href="letters.html">Письма</a></li>
+            <li><a href="contacts.html" class="active">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <button id="menu-toggle" class="menu-toggle" aria-label="Открыть меню">
+        <img src="star-icon.png" alt="Меню" class="menu-icon-img">
+    </button>
+
+    <main class="content">
+        <section class="intro">
+            <h1>Контакты</h1>
+            <p class="subtitle">Для предложений и добавления ветеранов</p>
+        </section>
+        <div class="contacts-block">
+            <p><strong>Почта проекта:</strong> <a href="mailto:pamyat.gimnazii@mail.ru">pamyat.gimnazii@mail.ru</a></p>
+            <p><strong>Официальный сайт гимназии:</strong> <a href="https://bal-gymsaltyk.edumsko.ru" target="_blank" rel="noopener">bal-gymsaltyk.edumsko.ru</a></p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Если вы хотите добавить историю вашего родственника — напишите нам на почту: <a href="mailto:pamyat.gimnazii@mail.ru">pamyat.gimnazii@mail.ru</a></p>
+        <p class="small">проект к 9 мая, 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
